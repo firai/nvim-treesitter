@@ -9,7 +9,7 @@
 
 ;; Identifier naming conventions
 ((identifier) @type
- (#lua-match? @type "^[A-Z].*[a-z]"))
+ (#lua-match? @type "^[A-Z].*[a-z][\(]"))
 ((identifier) @constant
  (#lua-match? @constant "^[A-Z][A-Z_0-9]+$"))
 
