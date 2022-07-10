@@ -15,9 +15,6 @@
 ((identifier) @constant
  (#eq? @constant "_"))
 
-((identifier) @constant
- (#vim-match? @constant "^[A-Z][A-Z\\d_]+$"))
-
 (const_spec
   name: (identifier) @constant)
 
@@ -37,6 +34,9 @@
 
 (method_declaration
   name: (field_identifier) @method)
+
+(method_spec 
+  name: (field_identifier) @method) 
 
 ; Operators
 
@@ -195,6 +195,10 @@
 (true) @boolean
 (false) @boolean
 (nil) @constant.builtin
+
+(keyed_element
+  . (literal_element (identifier) @field))
+(field_declaration name: (field_identifier) @field)
 
 (comment) @comment
 

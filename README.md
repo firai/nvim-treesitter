@@ -63,7 +63,7 @@ For more detailed information on setting these up, see ["Advanced setup"](#advan
 
 ## Requirements
 
-- **Neovim 0.7.0 or later** (latest [nightly](https://github.com/neovim/neovim#install-from-source) recommended)
+- **Neovim 0.7.0 or later** built with **tree-sitter 0.20.3+** (latest [nightly](https://github.com/neovim/neovim#install-from-source) recommended)
 - `tar` and `curl` in your path (or alternatively `git`)
 - A C compiler in your path and libstdc++ installed ([Windows users please read this!](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Windows-support)).
 
@@ -108,6 +108,9 @@ require'nvim-treesitter.configs'.setup {
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
+
+  -- Automatically install missing parsers when entering buffer
+  auto_install = true,
 
   -- List of parsers to ignore installing (for "all")
   ignore_install = { "javascript" },
@@ -220,7 +223,8 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [lua](https://github.com/MunifTanjim/tree-sitter-lua) (maintained by @muniftanjim)
 - [x] [m68k](https://github.com/grahambates/tree-sitter-m68k) (maintained by @grahambates)
 - [x] [make](https://github.com/alemuller/tree-sitter-make) (maintained by @lewis6991)
-- [ ] [markdown](https://github.com/MDeiml/tree-sitter-markdown)
+- [x] [markdown](https://github.com/MDeiml/tree-sitter-markdown) (experimental, maintained by @MDeiml)
+- [x] [markdown_inline](https://github.com/MDeiml/tree-sitter-markdown) (experimental, maintained by @MDeiml)
 - [x] [ninja](https://github.com/alemuller/tree-sitter-ninja) (maintained by @alemuller)
 - [x] [nix](https://github.com/cstrahan/tree-sitter-nix) (maintained by @leo60228)
 - [x] [norg](https://github.com/nvim-neorg/tree-sitter-norg) (maintained by @JoeyGrajciar, @vhyrro, @mrossinek)
@@ -238,11 +242,13 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [pug](https://github.com/zealot128/tree-sitter-pug) (maintained by @zealot128)
 - [x] [python](https://github.com/tree-sitter/tree-sitter-python) (maintained by @stsewd, @theHamsta)
 - [x] [ql](https://github.com/tree-sitter/tree-sitter-ql) (maintained by @pwntester)
+- [x] [qmljs](https://github.com/yuja/tree-sitter-qmljs) (maintained by @yuja)
 - [x] [Tree-sitter query language](https://github.com/nvim-treesitter/tree-sitter-query) (maintained by @steelsojka)
 - [x] [r](https://github.com/r-lib/tree-sitter-r) (maintained by @jimhester)
 - [x] [rasi](https://github.com/Fymyte/tree-sitter-rasi) (maintained by @Fymyte)
 - [x] [regex](https://github.com/tree-sitter/tree-sitter-regex) (maintained by @theHamsta)
 - [x] [rego](https://github.com/FallenAngel97/tree-sitter-rego) (maintained by @FallenAngel97)
+- [x] [rnoweb](https://github.com/bamonroe/tree-sitter-rnoweb) (maintained by @bamonroe)
 - [x] [rst](https://github.com/stsewd/tree-sitter-rst) (maintained by @stsewd)
 - [x] [ruby](https://github.com/tree-sitter/tree-sitter-ruby) (maintained by @TravonteD)
 - [x] [rust](https://github.com/tree-sitter/tree-sitter-rust) (maintained by @vigoux)
@@ -252,10 +258,11 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [slint](https://github.com/jrmoulton/tree-sitter-slint) (experimental, maintained by @jrmoulton)
 - [x] [solidity](https://github.com/YongJieYongJie/tree-sitter-solidity) (maintained by @YongJieYongJie)
 - [x] [sparql](https://github.com/BonaBeavis/tree-sitter-sparql) (maintained by @bonabeavis)
+- [x] [sql](https://github.com/derekstride/tree-sitter-sql) (maintained by @derekstride)
 - [x] [supercollider](https://github.com/madskjeldgaard/tree-sitter-supercollider) (maintained by @madskjeldgaard)
 - [x] [surface](https://github.com/connorlay/tree-sitter-surface) (maintained by @connorlay)
 - [x] [svelte](https://github.com/Himujjal/tree-sitter-svelte) (maintained by @elianiva)
-- [ ] [swift](https://github.com/alex-pinkus/tree-sitter-swift)
+- [x] [swift](https://github.com/alex-pinkus/tree-sitter-swift) (maintained by @alex-pinkus)
 - [x] [teal](https://github.com/euclidianAce/tree-sitter-teal) (maintained by @euclidianAce)
 - [x] [tiger](https://github.com/ambroisie/tree-sitter-tiger) (maintained by @ambroisie)
 - [x] [tlaplus](https://github.com/tlaplus-community/tree-sitter-tlaplus) (maintained by @ahelwer, @susliko)
@@ -265,7 +272,7 @@ We are looking for maintainers to add more parsers and to write query files for 
 - [x] [turtle](https://github.com/BonaBeavis/tree-sitter-turtle) (maintained by @bonabeavis)
 - [x] [typescript](https://github.com/tree-sitter/tree-sitter-typescript) (maintained by @steelsojka)
 - [x] [v](https://github.com/vlang/vls) (maintained by @tami5)
-- [x] [vala](https://github.com/matbme/tree-sitter-vala) (maintained by @matbme)
+- [x] [vala](https://github.com/vala-lang/tree-sitter-vala) (maintained by @Prince781, @vala-lang)
 - [x] [verilog](https://github.com/tree-sitter/tree-sitter-verilog) (experimental, maintained by @zegervdv)
 - [x] [vim](https://github.com/vigoux/tree-sitter-viml) (maintained by @vigoux)
 - [x] [vue](https://github.com/ikatyang/tree-sitter-vue) (maintained by @WhyNotHugo)
@@ -355,6 +362,38 @@ set foldexpr=nvim_treesitter#foldexpr()
 This will respect your `foldminlines` and `foldnestmax` settings.
 
 # Advanced setup
+
+## Changing the parser install directory
+
+If you want to install the parsers to a custom directory you can specify this
+directory with `parser_install_dir` option in that is passed to `setup`.
+`nvim-treesitter` will then install the parser files into this directory.
+
+This directory must be writeable and must be explicitly added to the
+`runtimepath`. For example:
+
+``` lua
+  require'nvim-treesitter.configs'.setup {
+    parser_install_dir = "/some/path/to/store/parsers",
+
+    ...
+
+  }
+  vim.opt.runtimepath:append("/some/path/to/store/parsers")
+```
+
+If this option is not included in the setup options, or is explicitly set to
+`nil` then the default install directories will be used. If this value is set
+the default directories will be ignored.
+
+Bear in mind that any parser installed into a parser folder on the runtime path
+will still be considered installed. (For example if
+"~/.local/share/nvim/site/parser/c.so" exists then the "c" parser will be
+considered installed, even though it is not in `parser_install_dir`)
+
+The default paths are:
+1. first the package folder. Where `nvim-treesitter` is installed.
+2. second the site directory. This is the "site" subdirectory of `stdpath("data")`.
 
 ## Adding parsers
 
