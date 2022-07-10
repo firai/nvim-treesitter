@@ -43,7 +43,15 @@ local list = setmetatable({}, {
     filetype_to_parsername[parserconfig.filetype or parsername] = parsername
   end,
 })
-
+list.qmljs = {
+  install_info = {
+    url = "https://github.com/yuja/tree-sitter-qmljs",
+    branch = "master",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  filetype = "qmljs",
+  maintainers = { "@yuja" },
+}
 list.scheme = {
   install_info = {
     url = "https://github.com/6cdh/tree-sitter-scheme",
@@ -398,7 +406,7 @@ list.ocaml = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-ocaml",
     files = { "src/parser.c", "src/scanner.cc" },
-    location = "tree-sitter-ocaml/ocaml",
+    location = "ocaml",
   },
   maintainers = { "@undu" },
 }
@@ -407,7 +415,7 @@ list.ocaml_interface = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-ocaml",
     files = { "src/parser.c", "src/scanner.cc" },
-    location = "tree-sitter-ocaml_interface/interface",
+    location = "interface",
   },
   maintainers = { "@undu" },
   filetype = "ocamlinterface",
@@ -433,9 +441,11 @@ list.org = {
 list.swift = {
   install_info = {
     url = "https://github.com/alex-pinkus/tree-sitter-swift",
-    branch = "with-generated-files",
+    branch = "main",
     files = { "src/parser.c", "src/scanner.c" },
+    requires_generate_from_grammar = true,
   },
+  maintainers = { "@alex-pinkus" },
 }
 
 list.c_sharp = {
@@ -462,7 +472,7 @@ list.typescript = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-typescript",
     files = { "src/parser.c", "src/scanner.c" },
-    location = "tree-sitter-typescript/typescript",
+    location = "typescript",
     generate_requires_npm = true,
   },
   maintainers = { "@steelsojka" },
@@ -472,7 +482,7 @@ list.tsx = {
   install_info = {
     url = "https://github.com/tree-sitter/tree-sitter-typescript",
     files = { "src/parser.c", "src/scanner.c" },
-    location = "tree-sitter-tsx/tsx",
+    location = "tsx",
     generate_requires_npm = true,
   },
   filetype = "typescriptreact",
@@ -527,9 +537,24 @@ list.hcl = {
 list.markdown = {
   install_info = {
     url = "https://github.com/MDeiml/tree-sitter-markdown",
+    location = "tree-sitter-markdown",
     files = { "src/parser.c", "src/scanner.cc" },
-    branch = "main",
+    branch = "split_parser",
+    readme_name = "markdown (basic highlighting)",
   },
+  maintainers = { "@MDeiml" },
+  experimental = true,
+}
+
+list.markdown_inline = {
+  install_info = {
+    url = "https://github.com/MDeiml/tree-sitter-markdown",
+    location = "tree-sitter-markdown-inline",
+    files = { "src/parser.c", "src/scanner.cc" },
+    branch = "split_parser",
+    readme_name = "markdown_inline (needs to be installed for full markdown highlighting)",
+  },
+  maintainers = { "@MDeiml" },
   experimental = true,
 }
 
@@ -745,6 +770,14 @@ list.sparql = {
   maintainers = { "@bonabeavis" },
 }
 
+list.sql = {
+  install_info = {
+    url = "https://github.com/derekstride/tree-sitter-sql",
+    files = { "src/parser.c" },
+  },
+  maintainers = { "@derekstride" },
+}
+
 list.gdscript = {
   install_info = {
     url = "https://github.com/PrestonKnopp/tree-sitter-gdscript",
@@ -805,10 +838,19 @@ list.r = {
 list.beancount = {
   install_info = {
     url = "https://github.com/polarmutex/tree-sitter-beancount",
-    files = { "src/parser.c" },
+    files = { "src/parser.c", "src/scanner.cc" },
     branch = "master",
   },
   maintainers = { "@polarmutex" },
+}
+
+list.rnoweb = {
+  install_info = {
+    url = "https://github.com/bamonroe/tree-sitter-rnoweb",
+    files = { "src/parser.c", "src/scanner.c" },
+  },
+  filetype = "rnoweb",
+  maintainers = { "@bamonroe" },
 }
 
 list.latex = {
@@ -989,11 +1031,11 @@ list.norg = {
 
 list.vala = {
   install_info = {
-    url = "https://github.com/matbme/tree-sitter-vala",
-    branch = "main",
-    files = { "src/parser.c", "src/scanner.cc" },
+    url = "https://github.com/vala-lang/tree-sitter-vala",
+    branch = "master",
+    files = { "src/parser.c" },
   },
-  maintainers = { "@matbme" },
+  maintainers = { "@Prince781", "@vala-lang" },
 }
 
 list.lalrpop = {
@@ -1073,7 +1115,7 @@ list.v = {
   install_info = {
     url = "https://github.com/vlang/vls",
     files = { "src/parser.c", "src/scanner.c" },
-    location = "tree-sitter-v/tree_sitter_v",
+    location = "tree_sitter_v",
     generate_requires_npm = false,
     requires_generate_from_grammar = false,
   },
